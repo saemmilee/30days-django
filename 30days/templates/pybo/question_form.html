@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="ko">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>question_form</title>
+</head>
+<body>
+
+<div id="question_form">
+
+    <h2>📝📝📝</h2><br>
+
+    <form method="post">
+        {% csrf_token %}
+        <!--{{ form.as_p }}-->
+
+        <!--오류 표시 시작-->
+        {% if form.errors %}
+        <div>
+            {% for field in form %}
+            {% if field.errors %}
+            <strong>{{ field.label }}</strong>
+            {{ field.errors }}
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!--오류 표시 끝-->
+
+        <div>
+            <input type="text" name="subject" id="subject" placeholder="SUBJECT"
+                   value="{{ form.subject.value|default_if_none:''}}"><br><br>
+        </div>
+
+        <div>
+            <!--<label id="contentLbl" for="content">내용</label><br>-->
+            <textarea id="contentTextarea" name="content" rows="20">
+                {{form.content.value|default_if_none:''}}
+            </textarea>
+        </div>
+
+        <br><br>
+
+        <button type="submit">SAVE</button>
+        <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">BACK</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

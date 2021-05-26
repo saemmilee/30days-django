@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="ko">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <!--chart.js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <title>after</title>
+</head>
+<body>
+
+<div id="after">
+
+    <h2>👉 {{ user.username }}님의 작심삼십일 이용 결과 👈</h2>
+
+    <!--결과 상세히-->
+    <div id="after_detail">
+        <h4>30일 중 {{ diary_list|length }}일의 기록이 존재합니다.</h4>
+        <h4>당신은 하루 평균 {{ calAvg|floatformat }}칼로리를 섭취하고 {{ timeAvg|floatformat }}분을 운동하셨습니다.</h4>
+        <h4></h4>
+    </div>
+
+    <!--차트-->
+    <canvas id="myChart" width="800" height="250"></canvas>
+
+    <!-- 30일 동안의 기록 -->
+    <table>
+
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>날짜</th>
+            <th>섭취한 칼로리</th>
+            <th>운동종류</th>
+            <th>운동시간</th>
+            <th>comment</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if diary_list %}
+        {% for diary in diary_list %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{diary.create_date | date:'Y년 m월 d일'}}</td>
+            <td>{{diary.calorie|floatformat}}</td>
+            <td>{{diary.exercise}}</td>
+            <td>{{diary.exerciseTime|floatformat}}</td>
+            <td>{{diary.comment}}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <p>30일 동안 한번도 기록하지 않으셨습니다.</p>
+        {% endif %}
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+
+    // 원래 작동하는 차트 자바스크립트 start
+	var ctx = document.getElementById('myChart');
+	var myChart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: [{% for diary in diary_list %}'{{diary.create_date | date:'m월 d일' }}',{% endfor %}],
+			datasets: [{
+				label: '섭취한 칼로리',
+				data: [{% for diary in diary_list %}'{{diary.calorie}}',{% endfor %}],
+				borderColor: 'rgb(75, 192, 192)',
+				borderWidth: 2
+			}]
+		},
+		options: {
+			responsive: false,
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: false
+					}
+				}]
+			},
+
+		}
+	});
+	//원래 작동하던 차트 자바스크립트 end
+</script>
+
+
+</body>
+</html>

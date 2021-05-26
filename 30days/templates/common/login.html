@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="ko">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>login</title>
+</head>
+<body>
+
+<div id="login_parent">
+<div id="login">
+
+    <h2>🔒🔑🔓</h2>
+
+    <form method="post" action="{% url 'common:login' %}">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div>
+            <input type="text" name="username" id="username" placeholder="USERNAME"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+        <div>
+            <input type="password" name="password" id="password" placeholder="PASSWORD"
+                   value="{{ form.password.value|default_if_none:'' }}">
+        </div>
+
+        <br>
+        <button type="button" onclick="location.href='{% url 'common:check' %}' ">회원가입</button>
+        <button type="submit">로그인</button>
+    </form>
+
+</div>
+</div>
+
+</body>
+</html>

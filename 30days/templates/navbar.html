@@ -1,0 +1,12 @@
+<!-- 네비게이션바 -->
+<nav>
+    <!-- 로그인 -->
+    {% if user.is_authenticated %}
+        <button type="button" onclick="location.href='{% url 'common:logout' %}' ">{{ user.username }} (로그아웃)</button>
+    {% else %}
+        <button type="button" onclick="location.href='{% url 'common:login' %}' ">login</button>
+    {% endif %}
+
+    <!-- Q&A 게시판 -->
+    <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">Q&A</button>
+</nav>

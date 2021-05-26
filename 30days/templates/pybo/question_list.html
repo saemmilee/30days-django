@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="ko">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>question_list</title>
+</head>
+<body>
+
+<div id="question_list">
+
+    <h2>📂📂📂</h2>
+
+    <!-- 질문 목록-->
+    <table id="QList">
+
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>답변수</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if question_list %}
+        {% for question in question_list %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td style="text-align: left"><a href="{% url 'pybo:detail' question.id %}">{{question.subject}}</a></td>
+            <td>{{ question.answer_set.count }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <p> 등록된 질문이 없습니다.</p>
+        {% endif %}
+        </tbody>
+
+    </table>
+
+    <br><br>
+
+    <!--질문 등록 버튼-->
+    <button type="button" onClick="location.href='{% url 'pybo:question_create' %}'">REGISTER</button>
+    <!--메인화면 이동 버튼-->
+    <button type="button" onClick="location.href='{% url 'main:index' %}'">MAINPAGE</button>
+
+</div>
+
+</body>
+</html>

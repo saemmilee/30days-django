@@ -1,0 +1,480 @@
+/* static(정적파일) : 이미지나 자바스크립트, 스타일 시트 같은 파일을 의미한다. */
+
+/* ---------------------------- Button start ---------------------------- */
+
+button
+{
+    width : 160px;
+    height : 40px;
+    font-size : 13px;
+    color : #626262;
+    border-color : #626262;
+    background-color : #FFFFFF;
+    border-radius : 5px;
+}
+
+button:hover
+{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-weight: bold;
+    color : #000000;
+}
+
+/* ---------------------------- Button end ---------------------------- */
+
+
+/* ---------------------------- mainPage.html start ---------------------------- */
+
+#mainLogo
+{
+    text-align : center ;
+}
+
+#mainNav
+{
+    text-align : center ;
+}
+
+#mainNav button
+{
+    width : 200px;
+    height : 50px;
+    font-size : 18px;
+    color : #626262;
+    border-color : #626262;
+    background-color : #FFFFFF;
+    border-radius : 5px;
+
+}
+
+#mainNav button:hover
+{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-weight: bold;
+    color : #000000;
+}
+
+/* ---------------------------- mainPage.html end ---------------------------- */
+
+
+/* ---------------------------- question_list.html start ---------------------------- */
+
+#question_list
+{
+    margin-top: 40px;
+    text-align: center;
+}
+
+#QList
+{
+    margin:auto;
+    border-collapse: collapse;
+    line-height: 1.5;
+    width: 50%;
+}
+
+#QList th {
+    color: #666;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 3px solid #666;
+}
+
+#QList td {
+    text-align: center;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+a:link
+{
+    color: black; text-decoration: none;
+}
+
+a:visited
+{
+    color: black; text-decoration: none;
+}
+
+a:hover
+{
+    color: black; text-decoration: none;
+}
+
+
+/* ---------------------------- question_list.html end ---------------------------- */
+
+
+/* ---------------------------- question_form.html start ---------------------------- */
+
+#question_form
+{
+    margin-top: 40px;
+    text-align: center;
+}
+
+#contentTextarea
+{
+    width: 50%;
+    border: 2px solid #666;
+}
+
+#subject
+{
+    width: 50%;
+    border: 2px solid #666;
+    line-height: 1.5;
+}
+
+/* ---------------------------- question_form.html end ---------------------------- */
+
+
+/* ---------------------------- question_detail.html start ---------------------------- */
+
+#question_detail
+{
+    margin:0 auto;
+    margin-top: 40px;
+    width: 50%;
+}
+
+#answerTextarea
+{
+    width: 100%;
+    border: 2px solid #666;
+}
+
+#question_detail hr
+{
+    border: 0;
+    height: 2px;
+    background: #666;
+}
+
+#SC
+{
+    margin-bottom: 40px;
+}
+
+#answerComment
+{
+    margin: 0;
+}
+
+#question_detail ul
+{
+    list-style-type: circle;
+}
+
+#answerButton
+{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* ---------------------------- question_detail.html end ---------------------------- */
+
+
+/* ---------------------------- login.html start ---------------------------- */
+
+#login
+{
+    text-align: center;
+    width: 480px;
+    height: 320px;
+    margin:0 auto;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-160px 0 0 -240px
+}
+
+#username
+{
+    width: 80%;
+    line-height: 2.5;
+}
+
+#password
+{
+    width: 80%;
+    line-height: 2.5;
+}
+
+#login input
+{
+    margin-bottom: 10px;
+}
+
+/* ---------------------------- login.html end ---------------------------- */
+
+
+/* ---------------------------- check.html start ---------------------------- */
+
+#check_intro
+{
+    margin:0 auto;
+    text-align: center;
+    border: 2px dashed #666;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#check_intro h4
+{
+    margin: 0;
+}
+
+#check_cal1
+{
+    text-align: center;
+    margin: 30px;
+}
+
+#check_cal1 input
+{
+     line-height: 2;
+}
+
+#check_cal2
+{
+     text-align: center;
+     margin: 15px;
+}
+
+#check_cal2 h5
+{
+    display: inline;
+}
+
+#joinBtn
+{
+    margin:0 auto;
+    width: 480px;
+}
+
+#BMIcalComment
+{
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+#check
+{
+    text-align: center;
+    width: 960px;
+    height: 420px;
+    margin:0 auto;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-210px 0 0 -480px
+}
+
+/* ---------------------------- check.html end ---------------------------- */
+
+/* ---------------------------- signup.html start ---------------------------- */
+
+#signup
+{
+    width: 450px;
+    height: 400px;
+    margin:0 auto;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-200px 0 0 -225px
+}
+
+#signup h2
+{
+    text-align: center;
+}
+
+#signup table
+{
+    margin:0 auto;
+    width: 100%;
+    border-spacing: 0 20px;
+}
+
+#signup table input
+{
+    width: 90%;
+    line-height: 1.8;
+}
+
+/* ---------------------------- signup.html end ---------------------------- */
+
+
+/* ---------------------------- addition.html start ---------------------------- */
+
+#addition
+{
+    width: 940px;
+    height: 1000px;
+    margin:0 auto;
+    margin-top: 40px;
+}
+
+#addition hr
+{
+    border: 0;
+    height: 2px;
+    background: #666;
+}
+
+#addition_intro
+{
+    text-align: center;
+    margin-top: 40px;
+    border: 2px dashed #666;
+}
+
+#container
+{
+    height: 440px;
+}
+
+#addition h2, h4
+{
+    text-align: center;
+}
+
+#addition_form table
+{
+    border-spacing: 0 15px;
+    width: 400px;
+    margin-left: 40px;
+}
+
+#addition_cal table
+{
+    border-spacing: 0 15px;
+    width: 460px;
+    margin-left: 40px;
+}
+
+#addition table input
+{
+    line-height: 1.8;
+}
+
+#addition_cal
+{
+    float: left;
+    margin:0 auto;
+    height: 440px;
+}
+
+#addition_form
+{
+    float: left;
+    margin:0 auto;
+    height: 440px;
+}
+
+/* ---------------------------- addition.html end ---------------------------- */
+
+
+/* ---------------------------- before.html start ---------------------------- */
+
+#before
+{
+    height: 560px;
+    width: 1050px;
+    margin:0 auto;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-280px 0 0 -525px
+}
+
+#before_form
+{
+    width: 500px;
+    height: 560px;
+    float: left;
+    margin:0 auto;
+}
+
+#images
+{
+    width: 500px;
+    height: 560px;
+    border: 2px dashed #666;
+    float: left;
+    margin:0 auto;
+}
+
+#before_form h2
+{
+    text-align: center;
+}
+
+#before_form table
+{
+    border-spacing: 0 15px;
+    width: 100%;
+    margin-left: 15px;
+}
+
+#before_form input
+{
+    width: 300px;
+}
+
+#before_form textarea
+{
+    width: 300px;
+}
+
+/* ---------------------------- before.html end ---------------------------- */
+
+
+/* ---------------------------- after.html start ---------------------------- */
+
+#after
+{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#myChart
+{
+    margin-top: 40px;
+    margin:0 auto;
+}
+
+#after table
+{
+    margin-top: 40px;
+    border-collapse: collapse;
+    line-height: 1.5;
+    width: 100%;
+    font-size: 12px;
+}
+
+#after table th {
+    color: #666;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 3px solid #666;
+}
+
+#after table td {
+    text-align: center;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+
+#after h2
+{
+    text-align: center;
+}

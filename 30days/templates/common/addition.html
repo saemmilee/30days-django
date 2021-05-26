@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="ko">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>addition</title>
+</head>
+<body>
+
+<div id="addition">
+    <!--<h2>✋ 사전정보입력 ✋</h2>-->
+    <!-- <hr>-->
+
+    <div id="container">
+        <div id="addition_cal">
+            <!--기초대사량과 권장칼로리 계산기-->
+            <h4>✋ 기초대사량 & 권장칼로리 계산기 ✋</h4>
+
+            <table>
+                <tr>
+                    <td><strong>성별</strong></td>
+                    <td><input type="radio" name="gender" value="man">남자 <input type="radio" name="gender" value="woman">여자
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>나이</strong></td>
+                    <td><input type="text" id="age"></td>
+                </tr>
+
+                <tr>
+                    <td><strong>신장</strong></td>
+                    <td><input type="text" id="height" placeholder="CM"></td>
+                </tr>
+
+                <tr>
+                    <td><strong>체중</strong></td>
+                    <td><input type="text" id="weight" placeholder="KG"></td>
+                </tr>
+
+                <tr>
+                    <td><strong>활동지수</strong></td>
+                    <td>
+                        <input type="radio" name="num" value="1.2">운동을 따로 하지 않는 경우 <br>
+                        <input type="radio" name="num" value="1.375">격렬한 운동 주 1~2회 or 가벼운 운동 3~4회 <br>
+                        <input type="radio" name="num" value="1.425">격렬한 운동 주 3~4회 or 가벼운 운동 5~7회 <br>
+                        <input type="radio" name="num" value="1.55">격렬한 운동 주 5~6회 <br>
+                        <input type="radio" name="num" value="1.75">격렬한 운동 주 6~7회
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: center;" colspan="2"><button type="button" onclick="cal()">계산하기</button></td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div id="addition_form">
+            <h4>✋ 사전 정보 저장 ✋</h4>
+            <!--profile 모델에 저장하는 form-->
+            <form method="post">
+                {% csrf_token %}
+                {% include "form_errors.html" %}
+
+                <table>
+                    <tr>
+                        <td><strong>기초대사량</strong></td>
+                        <td><input type="text" name="RMR" id="RMR" value="{{ form.RMR.value|default_if_none:'' }}"></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>권장칼로리</strong></td>
+                        <td><input type="text" name="RC" id="RC" value="{{ form.RC.value|default_if_none:'' }}"></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>목표 하루 운동시간</strong></td>
+                        <td><input type="text" name="exercise" id="exercise" placeholder="MINUTE" value="{{ form.exercise.value|default_if_none:'' }}"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align: center;" colspan="2"><button type="submit">SAVE</button></td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="addition_intro">
+        <p>저희 작심삼십일에서는 하루에 섭취하는 칼로리의 기준을 기초대사량 < 하루 섭취한 칼로리 < 권장칼로리로 하고 있습니다.</p>
+        <p>위의 기준을 참고하시고 정보를 입력해주세요.</p>
+        <p>만약 정확한 측정결과가 없다면 아래의 계산기를 이용해 보세요!</p>
+    </div>
+</div>
+
+    <!--기초대사량과 권장칼로리 계산기 구현-->
+    <script>
+
+        function cal(){
+
+            var resultRMR, resultRC;
+            var age = document.getElementById("age").value;
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+            var obj_length_gender = document.getElementsByName("gender").length;
+            var obj_length_num = document.getElementsByName("num").length;
+
+
+            for (var i=0; i<obj_length_gender; i++) {
+                if (document.getElementsByName("gender")[i].checked == true) {
+                    if(document.getElementsByName("gender")[i].value == "man"){
+                        resultRMR = 66.47+(13.75*weight)+(5*height)-(6.76*age);
+                    }else{
+                        resultRMR = 655.1+(9.56*weight)+(1.85*height)-(4.68*age);
+                    }
+                }
+            }
+
+            for (var i=0; i<obj_length_gender; i++) {
+                if (document.getElementsByName("num")[i].checked == true) {
+                    resultRC = document.getElementsByName("num")[i].value*resultRMR;
+                }
+            }
+
+            document.getElementById("RMR").value = resultRMR;
+            document.getElementById("RC").value = resultRC;
+            console.log(age);
+            console.log(weight);
+            console.log(height);
+        }
+
+    </script>
+
+</body>
+</html>

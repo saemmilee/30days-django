@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="ko">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>before</title>
+</head>
+<body>
+<div id="before">
+    <div id="before_form">
+        <h2>👉 작심삼십일 사용 {{date_diff}}일 째 👈</h2>
+
+        <!--diary 모델에 저장하는 form-->
+        <form method="post">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+
+            <table>
+                <tr>
+                    <td><strong>오늘 섭취한 칼로리</strong></td>
+                    <td><input type="text" name="calorie" id="calorie"
+                               value="{{ form.calorie.value|default_if_none:'' }}"></td>
+                </tr>
+
+                <tr>
+                    <td><strong>운동 종류</strong></td>
+                    <td><input type="text" name="exercise" id="exercise"
+                               value="{{ form.exercise.value|default_if_none:'' }}"></td>
+                </tr>
+
+                <tr>
+                    <td><strong>오늘 운동 시간</strong></td>
+                    <td><input type="text" name="exerciseTime" id="exerciseTime" placeholder="MINUTE"
+                               value="{{ form.exerciseTime.value|default_if_none:'' }}"></td>
+                </tr>
+
+                <tr>
+                    <td><strong>오늘을 보내고</strong></td>
+                    <td><textarea name="comment" id="comment" rows="20"> {{form.comment.value|default_if_none:''}} </textarea></td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: center;" colspan="2"><button type="submit">SAVE</button></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+
+    <div style="text-align: center;" id="images">Coming Soon...</div>
+</div>
+</body>
+</html>

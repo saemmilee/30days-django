@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="ko">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>signup</title>
+</head>
+<body>
+
+<div id="signup">
+
+    <h2>🙌 MEMBER JOIN 🙌</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+
+        <table>
+            <tr>
+                <td><strong>USER ID</strong></td>
+                <td><input type="text" name="username" id="userID"
+                           value="{{ form.username.value|default_if_none:'' }}"></td>
+            </tr>
+
+            <tr>
+                <td><strong>PASSWORD</strong></td>
+                <td><input type="password" name="password1" id="password1"
+                           value="{{ form.password1.value|default_if_none:'' }}"></td>
+            </tr>
+
+            <tr>
+                <td><strong>PASSWORD CHECK</strong></td>
+                <td><input type="password" name="password2" id="password2"
+                           value="{{ form.password2.value|default_if_none:'' }}"></td>
+            </tr>
+
+            <tr>
+                <td><strong>EMAIL</strong></td>
+                <td><input type="text" name="email" id="email"
+                           value="{{ form.email.value|default_if_none:'' }}"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="text-align: center;"><button type="submit">SIGN UP</button></td>
+            </tr>
+
+        </table>
+
+    </form>
+
+</div>
+
+</body>
+</html>

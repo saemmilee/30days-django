@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>question_detail</title>
+</head>
+<body>
+
+<div id="question_detail">
+
+    <div id="SC">
+        <h2>👉 {{question.subject}} 👈</h2>
+        <div>{{question.content}}</div>
+    </div>
+
+    <!--답변 등록 버튼-->
+    <form action="{% url 'pybo:answer_create' question.id%}" method="post">
+        <!--아래 태그는 항상 form 바로 아래 적어준다: 실제로 웹 브라우저에서 적힌 것인지 확인(보안)-->
+        {% csrf_token %}
+
+        <!--오류 표시 시작-->
+        {% if form.errors %}
+        <div role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+            {{ field.label }}
+            {{ field.errors}}
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!--오류 표시 끝-->
+
+        <h5 id="answerComment">WRITE ANSWER HERE</h5>
+        <textarea id="answerTextarea" name="content" rows="3"></textarea>
+        <!--<br><br>-->
+        <div id="answerButton">
+            <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">BACK</button>
+            <button type="submit">SAVE</button>
+        </div>
+        <!--<br><br><br>-->
+
+    </form>
+
+    <hr>
+
+    <!--답변 리스트-->
+    <h5>{{question.answer_set.count}}개의 답변</h5>
+    <div>
+        <ul>
+            {% for answer in question.answer_set.all %}
+            <li>{{answer.content}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
