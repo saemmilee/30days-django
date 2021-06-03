@@ -22,12 +22,13 @@
         {% if user.is_authenticated %}
             <button type="button" onclick="location.href='{% url 'common:logout' %}' ">LOGOUT</button>
             <button type="button" onclick="location.href='{% url 'record:index' %}'">{{ user.username }}님의 기록</button>
+            <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">Q&A</button>
         {% else %}
             <button type="button" onclick="location.href='{% url 'common:login' %}' ">LOGIN</button>
         {% endif %}
 
-        <!-- Q&A 게시판 -->
-        <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">Q&A</button>
+        <!--&lt;!&ndash; Q&A 게시판 &ndash;&gt;
+        <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">Q&A</button>-->
     </nav>
 
 </body>

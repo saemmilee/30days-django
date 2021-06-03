@@ -17,7 +17,8 @@ def index(request):
     # 오늘 날짜 가져오기
     now = datetime.now()
     # 오늘 날짜 - 계정생성일
-    day = (now-creation).days
+    # 가입한 날이 1일째이기 때문에 +1을 해준다.
+    day = (now-creation).days+1
     if day > 30:
         return redirect('record:after')
 
@@ -51,7 +52,8 @@ def before(request):
     else:
         now = datetime.now()
         joined = request.user.date_joined.replace(tzinfo=None)
-        date_diff = (now-joined).days
+        # 가입한 날이 1일째이기 때문에 +1을 해준다.
+        date_diff = (now-joined).days+1
         form = DiaryForm()
         context = {'form': form, 'date_diff':date_diff}
         return render(request, 'record/before.html', context)

@@ -13,39 +13,64 @@
 
 <div id="question_detail">
 
+    <!--제목 출력-->
     <div id="SC">
         <h2>👉 {{question.subject}} 👈</h2>
-        <div>{{question.content}}</div>
     </div>
+    <!--제목 출력 끝-->
 
-    <!--답변 등록 버튼-->
+    <hr>
+
+    <!--글쓴이와 글쓴 날짜 출력-->
+    <table id="question_information">
+            <tr>
+                <td>{{ question.author.username }}</td>
+                <td>{{ question.create_date }}</td>
+            </tr>
+    </table>
+    <!--글쓴이와 글쓴 날짜 출력 끝-->
+
+    <hr>
+
+    <!--내용 출력-->
+    <div id="question_content">{{question.content}}</div>
+    <!--내용 출력 끝-->
+
+    <br>
+
+    <!--답변 등록 form-->
     <form action="{% url 'pybo:answer_create' question.id%}" method="post">
         <!--아래 태그는 항상 form 바로 아래 적어준다: 실제로 웹 브라우저에서 적힌 것인지 확인(보안)-->
         {% csrf_token %}
 
-        <!--오류 표시 시작-->
+        <!--오류 표시-->
         {% if form.errors %}
         <div role="alert">
             {% for field in form %}
-            {% if field.errors %}
-            {{ field.label }}
-            {{ field.errors}}
-            {% endif %}
+                {% if field.errors %}
+                    {{ field.label }}
+                    {{ field.errors}}
+                {% endif %}
             {% endfor %}
         </div>
         {% endif %}
         <!--오류 표시 끝-->
 
+        <!--답변등록-->
         <h5 id="answerComment">WRITE ANSWER HERE</h5>
         <textarea id="answerTextarea" name="content" rows="3"></textarea>
-        <!--<br><br>-->
+        <!--답변등록 끝-->
+
+
         <div id="answerButton">
+            <!--게시판 첫 페이지로 돌아가는 버튼-->
             <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">BACK</button>
+            <!--답변 등록 버튼-->
             <button type="submit">SAVE</button>
         </div>
-        <!--<br><br><br>-->
 
     </form>
+    <!--답변 등록 form 끝-->
 
     <hr>
 
@@ -54,10 +79,22 @@
     <div>
         <ul>
             {% for answer in question.answer_set.all %}
-            <li>{{answer.content}}</li>
+            <li id="answer">
+                <table>
+                    <tr>
+                        <td>{{answer.content}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ answer.create_date }}</td>
+                        <td>&nbsp; |  &nbsp;</td>
+                        <td>글쓴이 : {{ answer.author.username }}</td>
+                    </tr>
+                </table>
+            </li>
             {% endfor %}
         </ul>
     </div>
+    <!--답변 리스트 끝-->
 
 </div>
 

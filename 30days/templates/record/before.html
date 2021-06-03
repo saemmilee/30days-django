@@ -51,7 +51,32 @@
         </form>
     </div>
 
-    <div style="text-align: center;" id="images">Coming Soon...</div>
+    <div style="text-align: center;" id="images">
+        <p>Coming Soon...</p>
+        <!--이미지 파일업로드-->
+        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
+        <div id="image_container"></div>
+    </div>
+
 </div>
+
+<script>
+function setThumbnail(event) {
+    <!--이미지 파일은 한장만-->
+    var cell = document.getElementById("image_container");
+    while ( cell.hasChildNodes() )
+        { cell.removeChild( cell.firstChild ); }
+
+    <!--이미지 썸네일-->
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        var img = document.createElement("img");
+        img.setAttribute("src", event.target.result);
+        document.querySelector("div#image_container").appendChild(img);
+    };
+    reader.readAsDataURL(event.target.files[0]); }
+</script>
+
+
 </body>
 </html>
