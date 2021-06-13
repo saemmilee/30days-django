@@ -74,7 +74,7 @@
         {% for page_number in question_list.paginator.page_range %}
             <!-- 현재페이지에서 -5한 수와 +5한 페이지를 포함한 사이에 있는 페이지만 출력 -->
             {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
-                <!-- if문이 없을 시에는 현재페이지만 출력 : endif 때문에 if문이 한번만 작동하는 것 같음 -->
+                <!-- if문이 없을 시에는 현재페이지만 출력 -->
                 {% if page_number == question_list.number %}
                 <li class="page-link">
                     <a href="?page={{ page_number }}">{{ page_number }}</a>

@@ -44,4 +44,4 @@ def addition(request):
             return redirect('main:index')
     else:
         form = ProfileForm()
-        return render(request, 'common/addition.html', {'form':form})
+        return render(request, 'common/addition.html', {'form': form})

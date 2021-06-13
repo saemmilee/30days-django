@@ -8,14 +8,13 @@ from django.contrib.auth.decorators import login_required
 
 
 
-@login_required(login_url='common:login')
 def index(request):
     """
     question 목록
     """
     # GET 방식 요청 URL에서 page값을 가져올 때 사용한다.
     # (ex) localhost:8000/pybo/?page=1
-    page = request.GET.get('page', '1')  # 페이지
+    page = request.GET.get('page', '1')
     question_list = Question.objects.order_by('-create_date')
     # 페이징처리
     # Paginator 클래스를 사용했으며
@@ -26,7 +25,6 @@ def index(request):
     return render(request, 'pybo/question_list.html', context)
 
 
-@login_required(login_url='common:login')
 def detail(request, question_id):
     """
     question 내용

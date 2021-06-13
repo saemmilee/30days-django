@@ -54,6 +54,7 @@ button:hover
     color : #000000;
 }
 
+
 /* ---------------------------- mainPage.html end ---------------------------- */
 
 
@@ -241,14 +242,14 @@ a:hover
 
 /* ---------------------------- check.html start ---------------------------- */
 
-#check_intro
+/*#check_intro
 {
     margin:0 auto;
     text-align: center;
     border: 2px dashed #666;
     width: 100%;
     margin-top: 50px;
-}
+}*/
 
 #check_intro h4
 {
@@ -292,13 +293,19 @@ a:hover
 #check
 {
     text-align: center;
-    width: 960px;
-    height: 420px;
+    width: 650px;
+    height: 300px;
     margin:0 auto;
     position:absolute;
     top:50%;
     left:50%;
-    margin:-210px 0 0 -480px
+    margin:-150px 0 0 -325px
+}
+
+#checkDetails
+{
+    margin-top:15px;
+    font-size:11px;
 }
 
 /* ---------------------------- check.html end ---------------------------- */
@@ -354,12 +361,12 @@ a:hover
     background: #666;
 }
 
-#addition_intro
+/*#addition_intro
 {
     text-align: center;
     margin-top: 40px;
     border: 2px dashed #666;
-}
+}*/
 
 #container
 {
@@ -402,6 +409,13 @@ a:hover
     float: left;
     margin:0 auto;
     height: 440px;
+}
+
+#additionDetails
+{
+    margin-top: 15px;
+   /* text-align: center;*/
+    font-size: 12px;
 }
 
 /* ---------------------------- addition.html end ---------------------------- */

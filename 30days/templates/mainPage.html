@@ -25,10 +25,8 @@
             <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">Q&A</button>
         {% else %}
             <button type="button" onclick="location.href='{% url 'common:login' %}' ">LOGIN</button>
+            <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">Q&A</button>
         {% endif %}
-
-        <!--&lt;!&ndash; Q&A 게시판 &ndash;&gt;
-        <button type="button" onclick="location.href='{% url 'pybo:index' %}' ">Q&A</button>-->
     </nav>
 
 </body>
