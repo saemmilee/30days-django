@@ -10,7 +10,7 @@
 ------------
 * 계정 생성
 > Javascript를 이용해 BMI 계산기를 구현 
-'''
+```
  function BMIcal(){
             var weight = document.getElementById("weight").value;
             var height = document.getElementById("height").value;
@@ -22,9 +22,10 @@
                 result = weight/(height*height*0.0001);
                 index();
  }
+```
 
 >비만, 고도 비만, 초고도비만에 해당하는 사용자만 계정 생성 버튼을 클릭 가능
-'''
+```
  function index(){
             if(result >= 35){
                 document.getElementById("index").innerHTML="초고도비만입니다.";
@@ -42,10 +43,11 @@
                 document.getElementById("index").innerHTML="가입조건에 맞지않습니다.";
                 joinButton.style.display="none";
   }
+ ```
 
 * 30일 동안의 일지 작성 및 확인
 > 계정 생성 당시의 날짜를 기준으로 redirect하는 페이지를 달리 구현
-'''
+```
 @login_required(login_url='common:login')
 def index(request):
     """
@@ -63,6 +65,7 @@ def index(request):
         return redirect('record:after')
 
     return redirect('record:before')
+ ```
 
 > 계정 생성 30일 이전에는 가록 날짜의 섭취한 칼로리, 운동 종류, 코멘트를 작성 가능
 
